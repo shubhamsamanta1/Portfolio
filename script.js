@@ -4,7 +4,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
     // Show .visible once element crosses 10% visibility and do not remove afterward to avoid flicker on iOS
     if (entry.intersectionRatio > 0.1) {
       entry.target.classList.add('visible');
-      // Note: no removal of 'visible' here to avoid flickering on mobile devices
+      // Note: we do not remove 'visible' here to avoid flickering on mobile devices
     }
   });
 }, 
@@ -13,6 +13,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
   rootMargin: '0px 0px -50px 0px'  // Trigger 50px before element enters viewport at bottom
 });
 
+
 // Observe newly inserted .fade-scroll elements
 function observeFadedElements() {
   document.querySelectorAll('.fade-scroll:not([data-observed])').forEach(el => {
@@ -20,6 +21,7 @@ function observeFadedElements() {
     el.dataset.observed = "true";
   });
 }
+
 
 document.addEventListener("DOMContentLoaded", function() {
   // ===== Selectors =====
@@ -31,12 +33,14 @@ document.addEventListener("DOMContentLoaded", function() {
   const mobileBtn = document.getElementById("mobile-nav-toggle");
   const mobileNav = document.getElementById("mobile-nav");
 
+
   // ===== Tab highlight logic (works for both navs) =====
   function highlightActiveTab(id) {
     allTabs.forEach(tab => {
       tab.classList.toggle("active", tab.getAttribute("href") === `#${id}`);
     });
   }
+
 
   // ===== Tab click/smooth scroll (for both navs) =====
   function tabClickHandler(tab) {
@@ -46,20 +50,25 @@ document.addEventListener("DOMContentLoaded", function() {
       if (targetSection) {
         e.preventDefault();
 
+
         // Calculate offset relative to main container
         const mainRect = main.getBoundingClientRect();
         const sectionRect = targetSection.getBoundingClientRect();
         const HEADER_HEIGHT = 60; // match CSS header height
         const offset = sectionRect.top - mainRect.top;
 
+
         main.scrollTo({
           top: main.scrollTop + offset - HEADER_HEIGHT,
           behavior: "smooth"
         });
 
+
         targetSection.focus({ preventScroll: true });
 
+
         highlightActiveTab(targetID);
+
 
         // If from mobile menu, auto-close menu
         if (mobileNav && mobileNav.classList.contains("open")) {
@@ -69,8 +78,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
+
   desktopTabs.forEach(tabClickHandler);
   mobileTabs.forEach(tabClickHandler);
+
 
   // ===== Mobile menu toggle logic =====
   if (mobileBtn && mobileNav) {
@@ -87,11 +98,13 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
+
   // ===== Scroll event for dynamic tab highlight =====
   main.addEventListener("scroll", () => {
     let currentSectionId = "";
     const scrollTop = main.scrollTop;
     const viewportHeight = main.clientHeight;
+
 
     sections.forEach(section => {
       const offsetTop = section.offsetTop;
@@ -105,11 +118,14 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
 
+
     if (currentSectionId) highlightActiveTab(currentSectionId);
   });
 
+
   // ===== Activate first tab on page load =====
   if (sections.length) highlightActiveTab(sections[0].id);
+
 
   // ===== FILL DATA INTO SECTIONS =====
   fillHome();
@@ -118,12 +134,15 @@ document.addEventListener("DOMContentLoaded", function() {
   fillSkillsAndCertifications();
   fillTrainingsAndRecognitions();
 
+
   // Observe all fade-scroll elements after a small delay so layout stabilizes
   setTimeout(() => {
     observeFadedElements();
   }, 100);
 
+
   // ===== DATA FILL FUNCTIONS (unchanged) =====
+
 
   function fillHome() {
     const d = window.profileData;
@@ -137,9 +156,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const locationText = document.getElementById("location-text");
     const expElem = document.getElementById("exp");
 
+
     if (nameElem) nameElem.textContent = d.name || "";
     if (roleElem) roleElem.textContent = d.role || "";
     if (aboutElem) aboutElem.textContent = d.about || "";
+
 
     if (eduElem && d.education && d.education.length > 0) {
       const edu = d.education[0];
@@ -152,11 +173,13 @@ document.addEventListener("DOMContentLoaded", function() {
       eduElem.classList.add("fade-scroll");
     }
 
+
     if (linkedinElem && d.linkedin) linkedinElem.href = d.linkedin;
     if (githubElem && d.github) githubElem.href = d.github;
     if (locationText) locationText.textContent = d.location || "";
     if (expElem) expElem.textContent = calculateExperienceText(new Date(2021, 8, 3));
   }
+
 
   function calculateExperienceText(startDate) {
     const now = new Date();
@@ -175,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (months > 0) str += " " + months + " month" + (months !== 1 ? "s" : "");
     return "I.T. Experience: " + str;
   }
+
 
   function fillExperience() {
     const d = window.profileData;
@@ -203,6 +227,7 @@ document.addEventListener("DOMContentLoaded", function() {
     `).join("");
   }
 
+
   function fillProjects() {
     const projects = (window.profileData && window.profileData.projects) || [];
     const track = document.getElementById("carousel-track");
@@ -224,12 +249,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const cards = track.children;
     const total = cards.length;
-    const showAtOnce = 3;
+
+    // Responsive number of cards visible:
+    let showAtOnce = window.innerWidth <= 720 ? 1 : 3;
     let current = 0;
 
     function updateCarousel() {
       if (!cards.length) return;
-      const cardWidth = cards[0].offsetWidth + 24; // approx margins
+      const cardWidth = cards[0].offsetWidth + 16; // margin between cards in px
       track.style.transform = `translateX(${-current * cardWidth}px)`;
 
       Array.from(cards).forEach((card, i) => {
@@ -259,10 +286,21 @@ document.addEventListener("DOMContentLoaded", function() {
       auto = setInterval(nextPage, 4500);
     };
 
+    // Update showAtOnce on window resize to support dynamic responsiveness
+    window.addEventListener('resize', () => {
+      const prevShow = showAtOnce;
+      showAtOnce = window.innerWidth <= 720 ? 1 : 3;
+      if (showAtOnce !== prevShow) {
+        current = 0; // reset current index if visible count changes
+        updateCarousel();
+      }
+    });
+
     updateCarousel();
 
     let auto = setInterval(nextPage, 4500);
   }
+
 
   function fillSkillsAndCertifications() {
     const d = window.profileData;
@@ -290,6 +328,7 @@ document.addEventListener("DOMContentLoaded", function() {
     `).join('');
   }
 
+
   function fillTrainingsAndRecognitions() {
     const d = window.profileData;
     const trainingCont = document.getElementById("trainings-bubble-row");
@@ -306,10 +345,8 @@ document.addEventListener("DOMContentLoaded", function() {
       ).join("");
     }
   }
-
-  // After filling contents, observe fade-ins
-  // (already called above with delay)
 });
+
 
 // ===== Back to Top logic =====
 document.addEventListener("DOMContentLoaded", () => {
@@ -335,6 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// ===== Assign resume link dynamically from data.js ====
 document.addEventListener("DOMContentLoaded", () => {
   const resumeLink = document.querySelector("a.resume-download");
   if (resumeLink && window.profileData && window.profileData.resumeUrl) {
