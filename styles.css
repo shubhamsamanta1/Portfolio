@@ -182,8 +182,8 @@ main#main-content {
 }
 
 .profile-img {
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: 200px;
   border-radius: 90px;
   object-fit: cover;
   box-shadow: 0 2px 12px #e3ebf7;
@@ -664,7 +664,7 @@ main#main-content {
 
 /* Media Queries */
 @media (max-width: 1100px) {
-  .main-left { width: 88vw; }
+  .main-left { width: 84vw; }
   .main-right { max-width: 94vw; }
   .carousel-container { padding: 0 6vw; }
 }
