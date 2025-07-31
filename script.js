@@ -289,7 +289,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Update showAtOnce on window resize to support dynamic responsiveness
     window.addEventListener('resize', () => {
       const prevShow = showAtOnce;
-      showAtOnce = window.innerWidth <= 720 ? 1 : 3;
+      showAtOnce = window.innerWidth <= 900 ? 1 : 3;
       if (showAtOnce !== prevShow) {
         current = 0; // reset current index if visible count changes
         updateCarousel();
