@@ -751,3 +751,28 @@ nav.tabs { display: flex; }
     outline: none;
   }
 }
+
+@media (max-width: 720px) {
+  .main-left {
+    display: block !important;
+    margin: 20px auto 16px auto !important; /* center horizontally */
+    float: none !important;                  /* reset any floats */
+    width: 90vw !important;                  /* responsive width */
+    max-width: 400px !important;             /* max width to keep it tidy */
+  }
+  .profile-img {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 150px !important;                  /* slightly smaller on mobile */
+    height: 150px !important;
+    max-width: 100% !important;
+  }
+  .main-right {
+    display: block !important;
+    width: 90vw !important;
+    max-width: 500px !important;
+    margin: 0 auto 24px auto !important;    /* centered below profile card */
+    vertical-align: top !important;
+  }
+}
