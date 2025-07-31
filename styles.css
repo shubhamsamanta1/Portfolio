@@ -755,7 +755,7 @@ nav.tabs { display: flex; }
 @media (max-width: 720px) {
   .main-left {
     display: block !important;
-    margin: 20px auto 16px auto !important; /* center horizontally */
+    margin: auto auto auto auto !important; /* center horizontally */
     float: none !important;                  /* reset any floats */
     width: 90vw !important;                  /* responsive width */
     max-width: 400px !important;             /* max width to keep it tidy */
@@ -772,7 +772,7 @@ nav.tabs { display: flex; }
     display: block !important;
     width: 90vw !important;
     max-width: 500px !important;
-    margin: 0 auto 24px auto !important;    /* centered below profile card */
+    margin: auto auto auto auto !important;    /* centered below profile card */
     vertical-align: top !important;
   }
 }
