@@ -132,7 +132,7 @@ footer {
 
 /* Main scrollable content */
 main#main-content {
-  margin-top: 50px;
+  margin-top: 60px;
   margin-bottom: 40px;
   height: calc(100vh - 100px);
   overflow-y: auto;

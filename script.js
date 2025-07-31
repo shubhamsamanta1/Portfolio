@@ -1,14 +1,17 @@
 // === Intersection Observer for fade-scroll effects ===
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    // Show .visible only when >45% of element is visible to avoid flicker/gitter
-    if (entry.intersectionRatio > 0.30) {
+    // Show .visible once element crosses 10% visibility and do not remove afterward to avoid flicker on iOS
+    if (entry.intersectionRatio > 0.1) {
       entry.target.classList.add('visible');
-    } else {
-      entry.target.classList.remove('visible');
+      // Note: no removal of 'visible' here to avoid flickering on mobile devices
     }
   });
-}, { threshold: [0, 0.25, 0.45, 0.75, 1] });
+}, 
+{ 
+  threshold: [0, 0.1, 0.25, 0.5, 1], 
+  rootMargin: '0px 0px -50px 0px'  // Trigger 50px before element enters viewport at bottom
+});
 
 // Observe newly inserted .fade-scroll elements
 function observeFadedElements() {
@@ -115,8 +118,10 @@ document.addEventListener("DOMContentLoaded", function() {
   fillSkillsAndCertifications();
   fillTrainingsAndRecognitions();
 
-  // Observe all fade-scroll elements
-  observeFadedElements();
+  // Observe all fade-scroll elements after a small delay so layout stabilizes
+  setTimeout(() => {
+    observeFadedElements();
+  }, 100);
 
   // ===== DATA FILL FUNCTIONS (unchanged) =====
 
@@ -303,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // After filling contents, observe fade-ins
-  observeFadedElements();
+  // (already called above with delay)
 });
 
 // ===== Back to Top logic =====
