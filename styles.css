@@ -725,7 +725,7 @@ nav.tabs { display: flex; }
 .mobile-menu-btn, #mobile-nav { display: none; }
 
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   nav.tabs { display: none; }
   .mobile-menu-btn {
     display: flex;
