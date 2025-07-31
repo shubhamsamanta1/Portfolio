@@ -6,6 +6,8 @@ window.profileData = {
     phone: "+91 8108442967 / 9833612537",
     linkedin: "https://www.linkedin.com/in/shubham-samanta-3654341b7/",   // Replace with your LinkedIn
     github: "https://github.com/shubhamsamanta1",            // Replace with your GitHub
+      // ... add your github resume url
+    resumeUrl: "https://shubhamsamanta1.github.io/Portfolio/Resume.pdf",
     education: [
       {
         degree: "Bachelor of Engineering in Computer Engineering",
