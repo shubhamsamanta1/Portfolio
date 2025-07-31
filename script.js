@@ -334,10 +334,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-  const resumeLink = document.querySelector("a.resume-download");
-  if (resumeLink && window.profileData && window.profileData.resumeUrl) {
-    resumeLink.href = window.profileData.resumeUrl;
-  }
-});
