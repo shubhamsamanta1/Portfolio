@@ -248,33 +248,59 @@ document.addEventListener("DOMContentLoaded", function() {
     `).join("");
 
     const cards = track.children;
-    const total = cards.length;
+    let currentPage = 0;
 
-    // Responsive number of cards visible:
-    let showAtOnce = window.innerWidth <= 720 ? 1 : 3;
-    let current = 0;
+    function getShowAtOnce() {
+      return window.innerWidth <= 900 ? 1 : 3;
+    }
+
+    function totalPages(showAtOnce) {
+      return Math.ceil(cards.length / showAtOnce);
+    }
 
     function updateCarousel() {
-      if (!cards.length) return;
-      const cardWidth = cards[0].offsetWidth + 16; // margin between cards in px
-      track.style.transform = `translateX(${-current * cardWidth}px)`;
+      const showAtOnce = getShowAtOnce();
+      const pageCount = totalPages(showAtOnce);
 
+      // Clamp to valid page index
+      if (currentPage >= pageCount) currentPage = 0;
+      if (currentPage < 0) currentPage = pageCount - 1;
+
+      // Hide all cards, show only the correct set
       Array.from(cards).forEach((card, i) => {
-        if (i >= current && i < current + showAtOnce) card.classList.add('visible');
-        else card.classList.remove('visible');
+        card.classList.remove('visible');
+        // Only show cards in current page window
+        if (
+          i >= currentPage * showAtOnce &&
+          i < (currentPage + 1) * showAtOnce
+        ) {
+          card.classList.add('visible');
+        }
       });
+
+      // Shift the track so the first visible card is aligned left
+      const cardWidth = cards[0].offsetWidth + 16;
+      let translateX = (currentPage * showAtOnce) * cardWidth;
+      track.style.transform = `translateX(-${translateX}px)`;
     }
 
     function nextPage() {
-      current = (current + showAtOnce) % total;
-      if (current > total - showAtOnce) current = 0;
-      updateCarousel();
-    }
-    function prevPage() {
-      current = (current - showAtOnce + total) % total;
+      const showAtOnce = getShowAtOnce();
+      const pageCount = totalPages(showAtOnce);
+      currentPage++;
+      if (currentPage >= pageCount) currentPage = 0;
       updateCarousel();
     }
 
+    function prevPage() {
+      const showAtOnce = getShowAtOnce();
+      const pageCount = totalPages(showAtOnce);
+      currentPage--;
+      if (currentPage < 0) currentPage = pageCount - 1;
+      updateCarousel();
+    }
+
+    // Add navigation button listeners
     nextBtn.onclick = () => {
       clearInterval(auto);
       nextPage();
@@ -286,20 +312,17 @@ document.addEventListener("DOMContentLoaded", function() {
       auto = setInterval(nextPage, 4500);
     };
 
-    // Update showAtOnce on window resize to support dynamic responsiveness
-    window.addEventListener('resize', () => {
-      const prevShow = showAtOnce;
-      showAtOnce = window.innerWidth <= 900 ? 1 : 3;
-      if (showAtOnce !== prevShow) {
-        current = 0; // reset current index if visible count changes
-        updateCarousel();
-      }
+    // Adjust when screen resizes
+    window.addEventListener("resize", () => {
+      currentPage = 0; // Reset page when layout changes
+      updateCarousel();
     });
 
     updateCarousel();
 
     let auto = setInterval(nextPage, 4500);
   }
+    
 
 
   function fillSkillsAndCertifications() {

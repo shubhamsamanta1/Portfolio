@@ -46,75 +46,81 @@ window.profileData = {
     ],
   
     certifications: [
+	  {
+        name: "Microsoft Certified: Azure Fundamentals (AZ-900)",
+        url: "https://learn.microsoft.com/en-us/users/somansamantashubham-1554/credentials/d57d2e92393b27dc?ref=https%3A%2F%2Fwww.linkedin.com%2F",
+        desc: "Demonstrated foundational knowledge of Microsoft Azure cloud services."
+      },
       {
         name: "Fundamentals of Java Programming",
-        url: "https://example.com/cert/java-fundamentals",
+        url: "https://www.coursera.org/account/accomplishments/certificate/Q27P4CVTF2Z3",
         desc: "Covered core Java concepts, OOP, and programming best practices."
       },
       {
         name: "Java FullStack Developer",
-        url: "https://example.com/cert/java-fullstack",
+        url: "https://www.coursera.org/account/accomplishments/specialization/certificate/WCM9QYBN3BK7",
         desc: "Comprehensive training in full-stack development using Java front-end and back-end."
       },
       {
         name: "Building HTTP APIs with Spring",
-        url: "https://example.com/cert/spring-http-api",
+        url: "https://www.coursera.org/account/accomplishments/certificate/W6P6AK5HE9RT",
         desc: "Hands-on experience creating and documenting RESTful APIs with Spring."
       },
       {
         name: "Data Structures & Backend with Java",
-        url: "https://example.com/cert/java-backend",
+        url: "https://www.coursera.org/account/accomplishments/certificate/JUHG3BHHCAZN",
         desc: "Strengthened skills in data structures and backend development with Java."
       },
       {
-        name: "Microsoft Certified: Azure Fundamentals (AZ-900)",
-        url: "https://learn.microsoft.com/certifications/exams/az-900/",
-        desc: "Demonstrated foundational knowledge of Microsoft Azure cloud services."
-      },
-      {
         name: "Frontend for Java Full Stack Development",
-        url: "https://example.com/cert/frontend-java-fullstack",
+        url: "https://www.coursera.org/account/accomplishments/certificate/KKW4KRCS9N38",
         desc: "Developed front-end interfaces integrated with Java backend services."
       }
     ],
   
     projects: [
-      {
-        name: "Microservices-based Banking System (Backend Development)",
-        desc: "Built fault-tolerant microservices for client, account, and loan management with robust security, configurations, and real-time monitoring.",
-        tech: ["Java", "Spring Boot", "Microservices", "Hibernate", "Azure"],
-        github: "https://github.com/your-github/banking-system"
-      },
-      {
-        name: "Real-time Insurance Claims API",
-        desc: "Developed robust REST APIs enabling instant insurance claims status updates and automated fraud detection features.",
-        tech: ["Java", "Spring Boot", "Docker", "AWS Lambda"],
-        github: "https://github.com/your-github/insurance-claims-api"
-      },
-      {
-        name: "Customer Onboarding Portal",
-        desc: "Created an automated onboarding platform to streamline customer registration, document verification, and welcome workflows.",
-        tech: ["React", "Node.js", "MongoDB", "Express"],
-        github: "https://github.com/your-github/customer-onboarding"
-      },
-      {
-        name: "Analytics Dashboard for Sales Insights",
-        desc: "Built a cross-platform analytics dashboard visualizing real-time sales KPIs with user access management and export features.",
-        tech: ["Angular", "TypeScript", "D3.js", "Firebase"],
-        github: "https://github.com/your-github/sales-analytics-dashboard"
-      },
-      {
-        name: "Personal Portfolio SPA",
-        desc: "A modern, responsive single-page site to showcase personal projects, experience, and downloadable resume.",
-        tech: ["HTML", "CSS", "JavaScript", "Web Animations"],
-        github: "https://github.com/your-github/portfolio-spa"
-      },
-      {
-        name: "Chatbot for Customer Support",
-        desc: "Implemented an AI-powered chatbot to handle customer queries, hand-over to agents, and track satisfaction score.",
-        tech: ["Python", "Flask", "Dialogflow", "Bootstrap"],
-        github: "https://github.com/your-github/chatbot-support"
-      }
+		  {
+			name: "Microservices-based Banking System Backend Development",
+			desc: "Built resilient microservices for client, account, and loan operations with secure APIs, centralized configuration, real-time notifications, and integrated monitoring",
+			tech: ["Java", "Spring Boot", "Microservices", "Hibernate", "Azure"],
+			github: "https://github.com/shubhamsamanta1/BANKING_SYSTEM"
+		  },
+		{
+		  name: "Hibernate Form Management Service",
+		  desc: "Implemented a Spring service layer managing CRUD operations for form entities with automatic timestamping and transactional integrity using Hibernate DAO.",
+		  tech: ["Java", "Spring Boot", "Hibernate", "JPA", "Transactional Management"],
+		  github: "https://github.com/shubhamsamanta1/hibernateProject"
+		},
+		{
+		  name: "Resident Management Service with Redis Caching",
+		  desc: "Built a Spring service for CRUD operations on resident entities with Redis-based caching, transactional integrity, and scheduled cache eviction for data freshness.",
+		  tech: ["Java", "Spring Boot", "Spring Data JPA", "Redis Cache", "Jakarta Persistence", "Scheduled Tasks"],
+		  github: "https://github.com/shubhamsamanta1/redisProject"
+		},
+		{
+		  name: "Interactive Portfolio Webpage",
+		  desc: "Developed a responsive single-page application featuring smooth scrolling navigation, dynamic tab highlighting, section-wise content population, fade-in scroll animations, and a carousel slider for projects.",
+		  tech: ["JavaScript", "HTML5", "CSS3", "Intersection Observer API", "DOM Manipulation"],
+		  github: "https://github.com/shubhamsamanta1/Portfolio"
+		},
+	  	{
+		  name: "Online Bookstore Management System",
+		  desc: "Developed a Django-based web app enabling user authentication, product browsing by category, advanced search, and contact form processing with robust admin analytics.",
+		  tech: ["Python", "Django", "SQLite/MySQL", "HTML", "CSS"],
+		  github: "https://github.com/shubhamsamanta1/weber-website"
+		},
+	   {
+		  name: "Shortest Path Visualizer",
+		  desc: "Built an interactive Tkinter-based tool for graph edge input, Dijkstra's shortest path calculation, and dynamic route visualization using NetworkX and Matplotlib.",
+		  tech: ["Python", "Tkinter", "NetworkX", "Matplotlib", "os"],
+		  github: "https://github.com/shubhamsamanta1/shortestpath"
+		},
+		{
+		  name: "Pizza Shop Management System",
+		  desc: "Built a comprehensive, GUI-based system for order management, billing, sales analytics, and machine learning-driven sales prediction with secure authentication and real-time tracking",
+		  tech: ["Python", "Tkinter", "Pandas", "NumPy", "Matplotlib", "PIL", "PyMySQL", "scikit-learn"],
+		  github: "https://github.com/shubhamsamanta1/Python_Pizza_shop_managment_GUI"
+		}
     ],    
 
     trainings: [
@@ -134,11 +140,11 @@ window.profileData = {
     skills: {
       core: [
         "Java", "Spring Boot", "Spring Framework", "Hibernate", "Microservices", "J2EE",
-        "REST API", "Junit", "XML", "AWS (Lambda & EC2)", "Python", "MySQL", "PostgreSQL"
+        "REST API", "Junit", "XML", "AWS (Lambda & EC2)", "Python", "MySQL", "PostgreSQL", "Maven", "Redis"
       ],
       tools: [
         "GitHub", "Tortoise SVN", "JIRA", "RunDeck", "ControlM", "Postman",
-        "SOAP", "Maven", "Redis", "IntelliJ IDEA", "DataGrip", "Eclipse", "VS Code"
+        "SOAP", "IntelliJ IDEA", "DataGrip", "Eclipse", "VS Code"
       ],
       ai: [
         "Leveraged AI tools like ChatGPT and GitHub Copilot to learn, accelerate, optimize, and enhance daily development tasks."
