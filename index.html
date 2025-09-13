@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shubham S. Samanta | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="data.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <meta name="color-scheme" content="light">
+    <div class="header-greeting">Hi, Welcome!</div>
+    <a href="resume.pdf" class="resume-download">Download Resume</a>
+    <nav class="tabs" role="navigation">
+      <a href="#home" class="active">Home</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills & Certifications</a>
+      <a href="#trainings">Trainings & Recognitions</a>
+    </nav>
+
+      <!-- THE BUTTON AND MOBILE NAV HERE: -->
+  <button id="mobile-nav-toggle" class="mobile-menu-btn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile Navigation">
+    <a href="#home">Home</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills & Certifications</a>
+    <a href="#trainings">Trainings & Recognitions</a>
+  </nav>
+  </header>
+
+  <main id="main-content" tabindex="0" aria-live="polite">
+    <section id="home" class="section-block fade-scroll" tabindex="-1">
+      <div class="main-left">
+        <img src="profile.jpg" alt="Profile Photo" class="profile-img" />
+        <div class="contact-title">Contact Details</div>
+        <div class="contact-block">
+          <a id="linkedin" href="#" target="_blank" class="contact-item fade-scroll">
+            <img src="linkedin.svg" alt="LinkedIn" class="contact-icon" />
+            <span>LinkedIn</span>
+          </a>
+          <a id="emailLink" href="#" class="contact-item fade-scroll">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="#BB001B" width="24" height="24">
+              <path d="M12 13.065l-8.608-7.25a2 2 0 0 1 1.267-.448h14.682a2 2 0 0 1 1.267.448L12 13.065zm-9.952-5.11A1.995 1.995 0 0 0 2 8.883V17a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8.883a1.995 1.995 0 0 0-.048-.928L13.06 15.12a3 3 0 0 1-2.12.88 3 3 0 0 1-2.121-.88l-6.791-7.165z"/>
+            </svg>
+            <span id="emailText"></span>
+          </a>
+        </div>
+      </div>
+      <div class="main-right fade-scroll">
+        <h1 id="name" class="name"></h1>
+        <div id="role" class="role"></div>
+        <div id="exp" class="exp"></div>
+        <div class="loc-exp">
+          <svg class="loc-icon" width="19" height="19" fill="#00b39b" viewBox="0 0 18 18">
+            <path d="M9 16.5S2.625 10.135 2.625 6.75A6.375 6.375 0 1 1 15.375 6.75C15.375 10.135 9 16.5 9 16.5zm0-9a2.625 2.625 0 1 0 0 5.25 2.625 2.625 0 0 0 0-5.25z"/>
+          </svg>
+          <span id="location-text"></span>
+        </div>
+        <div class="about-title">About</div>
+        <div id="about"></div>
+        <div class="edu-title">Highest Qualification</div>
+        <div id="edu"></div>
+      </div>
+    </section>
+
+    <section id="experience" class="section-block fade-scroll" tabindex="-1">
+      <h2 class="custom-section-title" >Professional Experience</h2>
+      <div id="exp-container" class="exp-card-list"></div>
+    </section>
+
+    <section id="projects" class="section-block fade-scroll" tabindex="-1">
+      <h2 class="custom-section-title">Projects</h2>
+      <div id="proj-carousel" class="carousel-container" aria-label="Projects Carousel">
+        <div class="carousel-track" id="carousel-track"></div>
+        <button class="carousel-btn carousel-prev" id="carousel-prev" aria-label="Previous">&#8592;</button>
+        <button class="carousel-btn carousel-next" id="carousel-next" aria-label="Next">&#8594;</button>
+      </div>   
+    </section>
+
+    <section id="skills" class="section-block fade-scroll" tabindex="-1">
+      <h2 class="custom-section-title">Skills & Certifications</h2>
+      <div class="skill-category-label" style="margin-bottom: 10px;">Technologies/Frameworks/Libraries</div>
+      <div id="core-skills" class="skill-bubble-row"></div>
+      
+      <div class="skill-category-label" style="margin-top: 20px; margin-bottom: 10px;">Development Tools</div>
+      <div id="tool-skills" class="skill-bubble-row"></div>
+      
+      <div class="skill-category-label" style="margin-top: 20px; margin-bottom: 10px;">AI Tools</div>
+      <div id="ai-skills" class="skill-bubble-row"></div>
+      
+      <h3 class="cert-section-title">Certifications</h3>
+      <div id="cert-grid" class="cert-grid"></div>
+    </section>
+
+    <section id="trainings" class="section-block fade-scroll" tabindex="-1">
+      <h2 class="custom-section-title">Trainings & Recognitions</h2>
+      <div class="training-category-label" style="margin-bottom: 10px;">Trainings</div>
+      <div id="trainings-bubble-row" class="training-bubble-row"></div>
+      
+      <div class="training-category-label" style="margin-top: 34px; margin-bottom: 10px;">Recognitions</div>
+      <div id="recognitions-bubble-row" class="training-bubble-row"></div>
+    </section>
+  </main>
+  <button id="back-to-top" aria-label="Back to top">⬆️ Top</button>
+  <footer>
+    &copy; 2025 Shubham S. Samanta
+  </footer>
+</body>
+</html>
